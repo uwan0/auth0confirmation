@@ -10,8 +10,7 @@ const configureClient = async () => {
 
   auth0 = await createAuth0Client({
     domain: config.domain,
-    client_id: config.clientId,
-    audience: "urn:apigee:target:api"
+    client_id: config.clientId
   });
 };
 
@@ -26,7 +25,7 @@ window.onload = async () => {
     // show the gated content
     let response = await fetch("https://storages4aicc.blob.core.windows.net/cc-files/select.html?sv=2019-12-12&ss=b&srt=sco&sp=rx&se=2021-10-13T12:58:27Z&st=2020-10-13T04:58:27Z&spr=https&sig=BWkmkGpxLkon9EYXLqDdi1xibK%2FAKs0X264aAfa2ByA%3D");
     let text = await response.text();
-    window.open(text);
+    await window.open(text);
     return;
   }
 
