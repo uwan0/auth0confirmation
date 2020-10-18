@@ -24,17 +24,9 @@ window.onload = async () => {
 
   if (isAuthenticated) {
     // show the gated content
-    await fetch("https://storages4aicc.blob.core.windows.net/cc-files/select.html?sv=2019-12-12&ss=b&srt=sco&sp=rx&se=2021-10-13T12:58:27Z&st=2020-10-13T04:58:27Z&spr=https&sig=BWkmkGpxLkon9EYXLqDdi1xibK%2FAKs0X264aAfa2ByA%3D")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`${res.status} ${res.statusText}`);
-        }
-        return res.text();
-      })
-      .then(texts => window.open(texts))
-      .catch((reason) => {
-        console.log(reason);
-      });
+    let response = await fetch("https://storages4aicc.blob.core.windows.net/cc-files/select.html?sv=2019-12-12&ss=b&srt=sco&sp=rx&se=2021-10-13T12:58:27Z&st=2020-10-13T04:58:27Z&spr=https&sig=BWkmkGpxLkon9EYXLqDdi1xibK%2FAKs0X264aAfa2ByA%3D");
+    let text = await response.text();
+    window.open(text);
     return;
   }
 
