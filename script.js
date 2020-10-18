@@ -23,9 +23,7 @@ window.onload = async () => {
 
   if (isAuthenticated) {
     // show the gated content
-    let response = await fetch("https://storages4aicc.blob.core.windows.net/cc-files/select.html?sv=2019-12-12&ss=b&srt=sco&sp=rx&se=2021-10-13T12:58:27Z&st=2020-10-13T04:58:27Z&spr=https&sig=BWkmkGpxLkon9EYXLqDdi1xibK%2FAKs0X264aAfa2ByA%3D");
-    let text = await response.text();
-    await window.open(text);
+    await open("https://storages4aicc.blob.core.windows.net/cc-files/select.html?sv=2019-12-12&ss=b&srt=sco&sp=rx&se=2021-10-13T12:58:27Z&st=2020-10-13T04:58:27Z&spr=https&sig=BWkmkGpxLkon9EYXLqDdi1xibK%2FAKs0X264aAfa2ByA%3D", "_blank");
     return;
   }
 
@@ -56,6 +54,8 @@ const updateUI = async () => {
     document.getElementById(
       "ipt-access-token"
     ).innerHTML = await auth0.getTokenSilently();
+    
+    var actn = await auth0.getTokenSilently();
 
     document.getElementById("ipt-user-profile").innerHTML = JSON.stringify(
       await auth0.getUser()
