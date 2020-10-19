@@ -4,6 +4,8 @@ const APP_PATH = `/auth0confirmation`; // https://ユーザー名.github.io/<コ
 let auth0 = null;
 const fetchAuthConfig = () => fetch("auth_config.json"); // auth_config.json読み込み
 
+var gactn = '';
+
 const configureClient = async () => {
   const response = await fetchAuthConfig();
   const config = await response.json();
@@ -55,7 +57,7 @@ const updateUI = async () => {
       "ipt-access-token"
     ).innerHTML = await auth0.getTokenSilently();
     
-    var actn = await auth0.getTokenSilently();
+    gactn = await auth0.getTokenSilently();
 
     document.getElementById("ipt-user-profile").innerHTML = JSON.stringify(
       await auth0.getUser()
