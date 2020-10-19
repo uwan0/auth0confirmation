@@ -4,7 +4,7 @@ const APP_PATH = `/auth0confirmation`; // https://ユーザー名.github.io/<コ
 let auth0 = null;
 const fetchAuthConfig = () => fetch("auth_config.json"); // auth_config.json読み込み
 
-var gactn = '';
+var gactn = 'globalset';
 
 const configureClient = async () => {
   const response = await fetchAuthConfig();
